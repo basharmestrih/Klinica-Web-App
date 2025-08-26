@@ -37,29 +37,27 @@ const ContactPage = () => {
         </div>
 
         {/* Right side - Contact Info */}
-        <div className="w-full md:w-1/2 bg-blue-800 text-white p-10 flex flex-col justify-between rounded-lg rounded-r-lg">
-          <h3 className="text-2xl font-semibold mb-6">Contact Us</h3>
+        <div className="w-full md:w-1/2 bg-blue-600 text-white p-10 flex flex-col justify-start rounded-lg rounded-r-lg">
+          <h3 className="text-2xl font-semibold mb-20">Contact Us</h3>
           <ul className="space-y-4 text-sm">
             <li className="flex items-center gap-2">
-              <span className="text-xl">📍</span>
-              23, Dada Estate, Osun, Nigeria.
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-xl">✉️</span>
-              pheesahdesigns@gmail.com
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-xl">💬</span>
-              Pheesahuiux
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-xl">📞</span>
-              07066979133
-            </li>
+          <span className="text-2xl">•</span>
+          <span className="text-xl font-bold italic  tracking-widest">Sheikh Zayed Road, Dubai, UAE</span>
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="text-2xl">•</span>
+          <span className="text-xl font-bold italic tracking-widest">instagram.com/klinica</span>
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="text-2xl">•</span>
+          <span className="text-xl font-bold italic tracking-widest">klinicasupport@gmail.com</span>
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="text-2xl">•</span>
+          <span className="text-xl font-bold italic tracking-widest">07066979133</span>
+        </li>
+
           </ul>
-          <div className="flex gap-4 text-xl mt-8">
-            <span>📷</span> <span>📘</span> <span>🐦</span> <span>🎵</span> <span>🔗</span>
-          </div>
         </div>
       </div>
     </div>
