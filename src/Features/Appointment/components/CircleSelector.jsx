@@ -3,7 +3,7 @@ import React from "react";
 const CircleSelector = ({ selectedCircle, setSelectedCircle }) => {
   const options = [
     { key: "doctor", icon: "fas fa-user-md", label: "Book a Doctor" },
-    { key: "appointments", icon: "fas fa-calendar-alt", label: "My Appointments" },
+    { key: "appointments", icon: "fas fa-calendar-alt", label: "Booked Appointments" },
     { key: "nearby", icon: "fas fa-map-marker-alt", label: "Nearby Clinics" },
   ];
 

@@ -5,24 +5,20 @@ import { AppointmentModel } from "../../../Models/AppointmentModel.jsx";
 
 export const useHandleSubmit = () => {
   const user = useSelector((state) => state.auth.user);
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [status, setStatus] = useState("idle"); 
 
   const handleSubmit = async (values, formikHelpers = {}) => {
     const { resetForm } = formikHelpers;
     setStatus("loading");
 
-    if (!user || !user.email) {
-      alert("User email not found. Please log in.");
-      setStatus("error");
-      return;
-    }
+   
 
     const appointment = new AppointmentModel({
-      patientName: values.name,
-      doctorSpec: values.specialization,
-      date: values.date,
-      time: values.time,
-      phone: values.phone,
+      PatientName: values.name,
+      DoctorSpec: values.specialization,
+      Date: values.date,
+      Time: values.time,
+      Phone: values.phone,
       email: 'mestbashar@gmail.com',
     });
 
@@ -33,7 +29,7 @@ export const useHandleSubmit = () => {
       setStatus("error");
     } else {
       setStatus("success");
-      resetForm?.();
+      
     }
   };
 

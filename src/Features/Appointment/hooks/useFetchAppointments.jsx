@@ -1,27 +1,44 @@
 // src/hooks/useFetchAppointments.js
 import { useEffect } from "react";
-import { supabase } from "../../../api/DataBaseClient/SupaBaseClient.jsx"; // Ensure you have the Supabase client
-import { useSelector } from "react-redux"; // Import useSelector to access Redux state
+import { supabase } from "../../../api/DataBaseClient/SupaBaseClient.jsx";
+import { useSelector } from "react-redux";
+import { AppointmentModel } from "../../../Models/AppointmentModel.jsx";
 
-export const useFetchAppointments = (selectedCircle, setAppointments) => {
-  const user = useSelector((state) => state.auth.user); // Access the logged-in user's data from Redux store
+export const useFetchAppointments = (selectedCircle, filter, setAppointments) => {
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
-    if (selectedCircle === "appointments" && user?.email) {
+    if (selectedCircle === "appointments") {
       const fetchAppointments = async () => {
-        const { data, error } = await supabase
-          .from("Clinic Appointments")
-          .select("PatientName, DoctorSpec, Date")
-          .eq("email", user.email); // Filter appointments by user email
+        let query = supabase.from("Clinic Appointments").select("*");
+
+        // ✅ Apply filters
+        const today = new Date();
+        if (filter === "Today") {
+          const start = today.toISOString().split("T")[0];
+          query = query.eq("Date", start);
+        } else if (filter === "This Week") {
+          const firstDay = new Date(today.setDate(today.getDate() - today.getDay()));
+          const lastDay = new Date(today.setDate(firstDay.getDate() + 6));
+          query = query.gte("Date", firstDay.toISOString().split("T")[0])
+                       .lte("Date", lastDay.toISOString().split("T")[0]);
+        }
+
+        const { data, error } = await query;
 
         if (error) {
           console.error("Error fetching appointments:", error);
         } else {
-          setAppointments(data);
+          console.log("🔹 Raw Supabase data:", data);
+
+          const mapped = data.map((row) => AppointmentModel.fromSupabase(row));
+          console.log("✅ Mapped Appointments:", mapped);
+
+          setAppointments(mapped);
         }
       };
 
       fetchAppointments();
     }
-  }, [selectedCircle, user?.email]); // Add user.email as a dependency
+  }, [selectedCircle, filter, user?.email, setAppointments]);
 };

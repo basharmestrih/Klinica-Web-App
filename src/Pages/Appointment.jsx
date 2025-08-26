@@ -19,9 +19,13 @@ const AppointmentPage = () => {
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [selectedCircle, setSelectedCircle] = useState("doctor");
-  const [appointments, setAppointments] = useState([]); // State to store appointments
   const handleSubmit = useHandleSubmit(name, specialization, date, time);
-  useFetchAppointments(selectedCircle, setAppointments);
+
+
+  const [appointments, setAppointments] = useState([]);
+const [filter, setFilter] = useState("This Week");
+
+useFetchAppointments(selectedCircle, filter, setAppointments);
 
 
   return (
@@ -60,7 +64,10 @@ const AppointmentPage = () => {
         <p>COMING SOON</p>
       </div>
     ) : (
-      <AppointmentHistory appointments={appointments} />
+        <AppointmentHistory
+    appointments={appointments}
+    onFilterChange={setFilter}
+  />
 
    
     )}
