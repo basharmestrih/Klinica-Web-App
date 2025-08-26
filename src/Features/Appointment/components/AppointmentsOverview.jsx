@@ -1,23 +1,20 @@
 import React, { useState } from "react";
 
-const AppointmentHistory = ({ appointments, onFilterChange }) => {
+const AppointmentHistory = ({ appointments, onFilterChange, loading }) => {
   const [activeFilter, setActiveFilter] = useState("This Week");
-
   const filters = ["Today", "This Week"];
 
   const handleFilterClick = (filter) => {
     setActiveFilter(filter);
-    onFilterChange(filter); // 🔹 notify parent (hook) to refetch
+    onFilterChange(filter);
   };
 
   return (
     <div className="text-gray-700 px-4">
-      {/* Title */}
       <p className="text-xl text-start font-bold text-gray-500 mb-4 uppercase tracking-wide">
         Appointment history
       </p>
 
-      {/* Filters Row */}
       <div className="flex justify-between gap-3 mx-20 mb-5">
         {filters.map((label) => (
           <div
@@ -34,8 +31,11 @@ const AppointmentHistory = ({ appointments, onFilterChange }) => {
         ))}
       </div>
 
-      {/* Appointments Table */}
-      {appointments.length > 0 ? (
+      {loading ? (
+          <div className="flex justify-center items-center mt-10">
+    <div className="w-10 h-10 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
+  </div>
+      ) : appointments.length > 0 ? (
         <div className="overflow-x-auto border rounded-lg shadow-sm max-h-[300px]">
           <table className="min-w-full text-sm">
             <thead>
@@ -57,9 +57,7 @@ const AppointmentHistory = ({ appointments, onFilterChange }) => {
           </table>
         </div>
       ) : (
-        <p className="text-center text-sm text-gray-400 mt-4">
-          No appointments found.
-        </p>
+        <p className="text-center text-sm text-gray-400 mt-4">No appointments found.</p>
       )}
     </div>
   );

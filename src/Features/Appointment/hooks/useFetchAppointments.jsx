@@ -4,15 +4,15 @@ import { supabase } from "../../../api/DataBaseClient/SupaBaseClient.jsx";
 import { useSelector } from "react-redux";
 import { AppointmentModel } from "../../../Models/AppointmentModel.jsx";
 
-export const useFetchAppointments = (selectedCircle, filter, setAppointments) => {
+export const useFetchAppointments = (selectedCircle, filter, setAppointments, setLoading) => {
   const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     if (selectedCircle === "appointments") {
       const fetchAppointments = async () => {
+        setLoading(true); // 🔹 start loading
         let query = supabase.from("Clinic Appointments").select("*");
 
-        // ✅ Apply filters
         const today = new Date();
         if (filter === "Today") {
           const start = today.toISOString().split("T")[0];
@@ -29,16 +29,14 @@ export const useFetchAppointments = (selectedCircle, filter, setAppointments) =>
         if (error) {
           console.error("Error fetching appointments:", error);
         } else {
-          console.log("🔹 Raw Supabase data:", data);
-
           const mapped = data.map((row) => AppointmentModel.fromSupabase(row));
-          console.log("✅ Mapped Appointments:", mapped);
-
           setAppointments(mapped);
         }
+
+        setLoading(false); // 🔹 finish loading
       };
 
       fetchAppointments();
     }
-  }, [selectedCircle, filter, user?.email, setAppointments]);
+  }, [selectedCircle, filter, user?.email, setAppointments, setLoading]);
 };
