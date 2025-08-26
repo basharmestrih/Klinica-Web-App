@@ -23,7 +23,7 @@ export const useHandleSubmit = () => {
       date: values.date,
       time: values.time,
       phone: values.phone,
-      email: user.email,
+      
     });
 
     const { error } = await supabase.from("Clinic Appointments").insert([appointment]);
