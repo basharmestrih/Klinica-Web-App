@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import SidebarMenu from "../SideBarMenu/SidebarMenu.jsx"; // adjust path as needed
+import { Link } from "react-router-dom";
 
 
 
 const Header = () => {
+  const dispatch = useDispatch();
   const { user, isLoggedIn } = useSelector((state) => state.auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -31,12 +33,40 @@ const Header = () => {
         >
  
         </div>
-        <a href="/" className="text-[#007bff] font-bold px-2 py-1 rounded-md transition duration-300 hover:bg-[#007bff] hover:text-white">Home</a>
-        <a href="/login" className="text-[#007bff] font-bold px-2 py-1  rounded-md transition duration-300 hover:bg-[#007bff] hover:text-white">Login</a>
-        <a href="/appointments" className="text-[#007bff] font-bold px-2 py-1  rounded-md transition duration-300 hover:bg-[#007bff] hover:text-white">Appointments</a>
-        <a href="/store" className="text-[#007bff] font-bold inline-block px-2 py-1 rounded-md transition duration-300 hover:bg-[#007bff] hover:text-white">Store</a>
-        <a href="/contact" className="text-[#007bff] font-bold inline-block px-2 py-1 rounded-md transition duration-300 hover:bg-[#007bff] hover:text-white">Contact Us</a>
+<Link
+  to="/"
+  className="text-[#007bff] font-bold px-2 py-1 rounded-md transition duration-300 hover:bg-[#007bff] hover:text-white"
+>
+  Home
+</Link>
 
+<Link
+  to="/login"
+  className="text-[#007bff] font-bold px-2 py-1 rounded-md transition duration-300 hover:bg-[#007bff] hover:text-white"
+>
+  Login
+</Link>
+
+<Link
+  to="/appointments"
+  className="text-[#007bff] font-bold px-2 py-1 rounded-md transition duration-300 hover:bg-[#007bff] hover:text-white"
+>
+  Appointments
+</Link>
+
+<Link
+  to="/store"
+  className="text-[#007bff] font-bold px-2 py-1 rounded-md transition duration-300 hover:bg-[#007bff] hover:text-white"
+>
+  Store
+</Link>
+
+<Link
+  to="/contact"
+  className="text-[#007bff] font-bold px-2 py-1 rounded-md transition duration-300 hover:bg-[#007bff] hover:text-white"
+>
+  Contact Us
+</Link>
         {/* User Avatar */}
         {isLoggedIn && user?.email && (
         <div
