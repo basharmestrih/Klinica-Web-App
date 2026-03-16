@@ -16,7 +16,10 @@ Direct Support Channel: Integrated communication bridge for immediate assistance
 
 Flexible Authentication: Optimized onboarding flow supporting both Email and Phone-based registration to maximize user conversion.
 
+---------------------------------------------------------------------
+
 Technical Architecture & Strategic Decisions
+
 The development of Klinica focused on scalability, state predictability, and system performance. The following architectural choices were made to support a high-traffic healthcare environment:
 
 React.js: Selected for its component-based architecture, enabling the creation of a modular, reusable UI library that ensures consistency across the appointment booking and e-commerce modules.
