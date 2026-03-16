@@ -8,6 +8,8 @@ https://klinica-web-app.vercel.app/
 
 View Case Study on Behance
 
+https://www.behance.net/gallery/224190483/Clinic-Appointment-Web-App-(Klinica)-(React)
+
 The Tech Stack
 
 Frontend: React.js for a modular, component-based UI that ensures consistency across booking and e-commerce.
