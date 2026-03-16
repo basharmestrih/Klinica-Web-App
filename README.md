@@ -1,4 +1,5 @@
 Klinica | Modern Healthcare Management System
+
 Klinica is a high-performance healthcare platform designed to bridge the gap between patients and medical services. By combining a streamlined booking engine with an integrated medical commerce experience, it provides a cohesive digital ecosystem for modern clinics.
 
 Professional Showcase
