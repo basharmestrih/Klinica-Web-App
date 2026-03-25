@@ -6,10 +6,10 @@ const SignupHint = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full flex flex-col items-center mt-6 px-4">
+    <div className="mt-6 flex w-full max-w-[24rem] flex-col items-center">
       
       {/* Divider with "or" */}
-      <div className="flex items-center w-96 mb-4">
+      <div className="mb-4 flex w-full items-center">
         <div className="flex-grow h-px bg-gray-300"></div>
         <span className="px-3 text-gray-500 text-sm font-medium">or</span>
         <div className="flex-grow h-px bg-gray-300"></div>
@@ -17,7 +17,7 @@ const SignupHint = () => {
 
       {/* Google button */}
       <button
-        className="w-96 p-3 bg-gray-300 border border-gray-300 text-gray-700 font-semibold rounded-lg 
+        className="w-full border border-gray-300 bg-gray-300 p-3 text-gray-700 font-semibold rounded-lg 
                    hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 
                    flex items-center justify-center gap-3 shadow-sm transition-all"
         type="button"

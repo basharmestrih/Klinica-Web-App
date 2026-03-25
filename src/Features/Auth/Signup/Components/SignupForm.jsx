@@ -9,7 +9,7 @@ const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="bg-white/90 backdrop-blur-md px-8 py-6 rounded-2xl shadow-xl w-96 mt-6 transition transform hover:scale-[1.02] hover:shadow-2xl">
+    <div className="mt-6 w-full rounded-2xl bg-white/90 px-5 py-6 shadow-xl backdrop-blur-md transition hover:shadow-2xl sm:px-8 sm:w-[24rem] sm:max-w-full sm:hover:scale-[1.02]">
       <h1 className="text-[#007bff] text-2xl font-extrabold text-center mb-6">
         Create an Account
       </h1>

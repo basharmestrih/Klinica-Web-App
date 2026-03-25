@@ -1,75 +1,81 @@
-// components/BlueSection.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+const stats = [
+  { value: "+150", label: "Active Doctors" },
+  { value: "+1.5k", label: "Daily Users" },
+  { value: "+30", label: "Supported Locations" },
+];
+
 const IntroSection = () => {
   const navigate = useNavigate();
+
   return (
-    <div className="w-full h-[650px] bg-[#007bff] text-white">
-      <div className="flex flex-col md:flex-row justify-end h-full">
-{/* Left Side */}
-<div className="flex-1 flex flex-col justify-start space-y-10 p-10">
-  {/* Top Section: Headers + Description */}
-  <div>
-    <h1 className="text-3xl font-bold text-indigo-50">Welcome to Klinica</h1>
-    <h1 className="text-3xl font-bold text-indigo-50">Healthy Feels, Happy Vibes!</h1>
-    <p className="w-2/3 mt-5 text-sm font-bold text-indigo-50">
-      From trusted treatments to health-boosting products and daily wellness tips, Klinica has everything you need to feel your best, every day.
-    </p>
-  </div>
+    <section className="w-full bg-[#007bff] text-white">
+      <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl flex-col-reverse overflow-hidden md:flex-row">
+        <div className="flex flex-1 flex-col justify-center px-5 py-8 sm:px-8 md:px-10 lg:px-14">
+          <div className="max-w-2xl">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-blue-100">
+              Your trusted health partner
+            </p>
+            <h1 className="text-4xl font-bold leading-tight text-indigo-50 sm:text-5xl lg:text-6xl">
+              Welcome to Klinica
+            </h1>
+            <h2 className="mt-3 text-2xl font-bold bg-gradient-to-r from-amber-400 to-red-400 bg-clip-text text-transparent sm:text-3xl lg:text-4xl">
+              Healthy Feels, Happy Vibes!
+            </h2>
+            <p className="mt-6 max-w-xl text-base font-medium leading-7 text-blue-50 sm:text-lg">
+              From trusted treatments to health-boosting products and daily wellness tips, Klinica has
+              everything you need to feel your best, every day.
+            </p>
+          </div>
+          <div className="mt-10 flex max-w-3xl flex-wrap gap-x-8 gap-y-5">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="min-w-[140px] flex-1 border-l-2 border-white/35 pl-4"
+              >
+                <div className="text-3xl font-black tracking-tight text-white sm:text-4xl">
+                  {stat.value}
+                </div>
+                <div className="mt-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-100 sm:text-sm">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
 
-  {/* Bottom Section: Stats */}
-  <div className="flex flex-col gap-6 mt-10">
-    {/* Circles Row */}
-    <div className="flex gap-12">
-      <div className="bg-indigo-50 text-blue-500 p-4 rounded-full w-28 h-28 flex flex-col items-center justify-center shadow-md text-center">
-        <div className="text-xl font-bold">+150</div>
-        <div className="text-xs font-medium">Active Doctors</div>
-      </div>
+          <p className="mt-10 max-w-2xl text-lg font-bold text-indigo-50 sm:text-xl">
+            What are you waiting for? Start your journey to better health now!
+          </p>
 
-      <div className="bg-indigo-50 text-blue-500 p-4 rounded-full w-28 h-28 flex flex-col items-center justify-center shadow-md text-center">
-        <div className="text-xl font-bold">+1.5k</div>
-        <div className="text-xs font-medium">Daily Users</div>
-      </div>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <button
+              type="button"
+              onClick={() => navigate("/signup")}
+              className="rounded-lg bg-indigo-50 px-6 py-3 text-center font-semibold text-blue-500 shadow transition hover:bg-gray-100"
+            >
+              Get Started
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate("/store")}
+              className="rounded-lg bg-red-500 px-6 py-3 text-center font-semibold text-white shadow transition hover:bg-blue-800"
+            >
+              Buy Healthy Products
+            </button>
+          </div>
+        </div>
 
-      <div className="bg-indigo-50 text-blue-500 p-4 rounded-full w-28 h-28 flex flex-col items-center justify-center shadow-md text-center">
-        <div className="text-xl font-bold">+30</div>
-        <div className="text-xs font-medium">Supported Locations</div>
-      </div>
-    </div>
-
-    {/* CTA Text */}
-    <p className="text-xl font-bold text-indigo-50 mt-4">
-      What are you waiting for? Start your journey to better health now!
-    </p>
-    {/* Buttons */}
-    <div className="flex gap-4 mt-2">
-      <button
-      onClick={() => navigate("/signup")}
-       className="px-6 py-2 rounded-md bg-indigo-50 text-blue-500 font-semibold shadow hover:bg-gray-100 transition">
-        Get Started
-      </button>
-      <button
-      onClick={() => navigate("/store")}
-       className="px-6 py-2 rounded-md bg-red-500 text-white font-semibold shadow hover:bg-blue-800 transition">
-        Buy Healthy Products
-      </button>
-    </div>
-  </div>
-</div>
-
-
-
-        {/* Right Side */}
-        <div className="flex justify-end bg-white w-[700px] h-full">
+        <div className="h-[350px] w-full md:h-auto md:w-[44%] lg:w-[48%]">
           <img
             src="/assets/nurse2.jpg"
-            alt="Clinic"
-            className="shadow-lg h-full object-cover"
+            alt="Clinic staff member ready to help patients"
+            className="h-full w-full object-cover object-center"
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

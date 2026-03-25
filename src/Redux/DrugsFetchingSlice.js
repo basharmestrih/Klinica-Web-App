@@ -5,7 +5,7 @@ import { supabase } from "../api/DataBaseClient/SupaBaseClient.jsx";
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
-    const { data, error } = await supabase.from("drugs").select("*");
+    const { data, error } = await supabase.from("DRUGSDB").select("*");
     if (error) throw new Error(error.message);
 
     return data.map((item) => ({

@@ -1,4 +1,3 @@
-// components/ServicesSection.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -7,46 +6,59 @@ const services = [
     title: "Book Appointments",
     description: "Book directly your desired appointment and get notified your book is done",
     image: "/assets/bookcard.jpg",
-    page: "/appointments", // target route
+    page: "/appointments",
   },
   {
     title: "Health Products",
     description: "Discover doctor-approved supplements, vitamins, and essentials.",
     image: "/assets/as.jpg",
-    page: "/store", // target route
+    page: "/store",
   },
   {
     title: "Wellness Tips",
     description: "Daily tips and lifestyle advice to stay active, energized, and stress-free.",
     image: "/assets/tipscard2.jpg",
-    page: "/wellness", // target route
+    page: "/wellness",
   },
+  {
+    title: "Health Records",
+    description: "Securely store and access your health records anytime, anywhere.",
+    image: "/assets/records.jpg",
+    page: "/records",
+  }
 ];
 
 const ServicesSection = () => {
   return (
-    <div className="px-20 py-12">
-      <h2 className="text-3xl font-bold text-center mb-10">Our Services</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <Link key={index} to={service.page}>
-            <div
-              className="relative h-64 rounded-xl overflow-hidden shadow-md bg-cover bg-center text-white cursor-pointer transform hover:scale-105 transition"
-              style={{ backgroundImage: `url(${service.image})` }}
-            >
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+    <section className="px-4 py-12 sm:px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl">
+        <h2 className="text-3xl font-bold text-center text-slate-900 sm:text-4xl">Our Services</h2>
+        <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-6 text-slate-600 sm:text-base">
+          Explore the parts of Klinica that help you book care, shop wellness products, and stay on
+          top of your health.
+        </p>
 
-              {/* Text Content */}
-              <div className="absolute bottom-0 p-4 z-10">
-                <h3 className="text-lg font-bold mb-1">{service.title}</h3>
-                <p className="text-sm font-bold">{service.description}</p>
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {services.map((service) => (
+            <Link key={service.title} to={service.page} className="group">
+              <div
+                className="relative h-72 overflow-hidden rounded-3xl bg-cover bg-center text-white shadow-md transition duration-300 group-hover:-translate-y-1 group-hover:shadow-xl sm:h-80"
+                style={{ backgroundImage: `url(${service.image})` }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+
+                <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6">
+                  <h3 className="text-xl font-bold sm:text-2xl">{service.title}</h3>
+                  <p className="mt-2 max-w-sm text-sm font-medium leading-6 text-slate-100 sm:text-base">
+                    {service.description}
+                  </p>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

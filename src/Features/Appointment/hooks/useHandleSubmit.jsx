@@ -22,7 +22,7 @@ export const useHandleSubmit = () => {
       email: 'mestbashar@gmail.com',
     });
 
-    const { error } = await supabase.from("Clinic Appointments").insert([appointment]);
+    const { error } = await supabase.from("appointments").insert([appointment]);
 
     if (error) {
       console.error("Error inserting appointment:", error);

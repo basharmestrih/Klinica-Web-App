@@ -10,54 +10,61 @@ const AppointmentHistory = ({ appointments, onFilterChange, loading }) => {
   };
 
   return (
-    <div className="text-gray-700 px-4">
-      <p className="text-xl text-start font-bold text-gray-500 mb-4 uppercase tracking-wide">
-        Appointment history
-      </p>
+    <div className="rounded-3xl bg-white p-4 shadow-lg ring-1 ring-slate-100 sm:p-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-lg font-bold uppercase tracking-[0.2em] text-slate-500 sm:text-xl">
+          Appointment history
+        </p>
 
-      <div className="flex justify-between gap-3 mx-20 mb-5">
-        {filters.map((label) => (
-          <div
-            key={label}
-            onClick={() => handleFilterClick(label)}
-            className={`rounded-2xl shadow-sm px-4 py-2 w-28 text-center text-sm font-medium cursor-pointer transition-all ${
-              activeFilter === label
-                ? "bg-blue-500 text-white"
-                : "bg-indigo-100 text-gray-700 hover:bg-blue-100 hover:text-blue-600"
-            }`}
-          >
-            {label}
-          </div>
-        ))}
+        <div className="flex gap-3">
+          {filters.map((label) => (
+            <button
+              key={label}
+              type="button"
+              onClick={() => handleFilterClick(label)}
+              className={`rounded-lg px-4 text-sm font-bold transition ${
+                activeFilter === label
+                  ? "bg-blue-500 text-white shadow-md shadow-blue-100"
+                  : "bg-indigo-100 text-slate-700 hover:bg-blue-100 hover:text-blue-700"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {loading ? (
-          <div className="flex justify-center items-center mt-10">
-    <div className="w-10 h-10 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
-  </div>
+        <div className="flex min-h-[220px] items-center justify-center">
+          <div className="h-10 w-10 rounded-full border-4 border-blue-500 border-dashed animate-spin" />
+        </div>
       ) : appointments.length > 0 ? (
-        <div className="overflow-x-auto border rounded-lg shadow-sm max-h-[300px]">
-          <table className="min-w-full text-sm">
-            <thead>
-              <tr className="text-left text-gray-600 uppercase text-xs tracking-wide border-b-2 border-gray-300 sticky top-0 bg-white z-10">
-                <th className="px-4 py-3">Patient Name</th>
-                <th className="px-4 py-3">Doctor Specialization</th>
-                <th className="px-4 py-3">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {appointments.map((appointment, index) => (
-                <tr key={index} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-4 py-4 font-medium text-gray-800">{appointment.PatientName}</td>
-                  <td className="px-4 py-4 text-gray-700">{appointment.DoctorSpec}</td>
-                  <td className="px-4 py-4 text-gray-700">{appointment.Date}</td>
+        <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200">
+          <div className="overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <table className="min-w-[520px] w-full text-sm">
+              <thead>
+                <tr className="border-b border-slate-200 bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+                  <th className="px-4 py-3">Patient Name</th>
+                  <th className="px-4 py-3">Doctor Specialization</th>
+                  <th className="px-4 py-3">Date</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {appointments.map((appointment, index) => (
+                  <tr key={index} className="border-b border-slate-100 last:border-b-0 hover:bg-slate-50">
+                    <td className="px-4 py-4 font-medium text-slate-900">{appointment.PatientName}</td>
+                    <td className="px-4 py-4 text-slate-600">{appointment.DoctorSpec}</td>
+                    <td className="px-4 py-4 text-slate-600">{appointment.Date}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : (
-        <p className="text-center text-sm text-gray-400 mt-4">No appointments found.</p>
+        <div className="mt-6 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-10 text-center text-sm text-slate-500">
+          No appointments found.
+        </div>
       )}
     </div>
   );

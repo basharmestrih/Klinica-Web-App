@@ -1,5 +1,4 @@
 // pages/Home.jsx
-import React from "react";
 import BlueSection from "../Features/Home/components/IntroSection.jsx";
 import ServicesSection from "../Features/Home/components/ServicesSection.jsx";
 import StoreBanner from "../Features/Home/components/StoreBanner.jsx";

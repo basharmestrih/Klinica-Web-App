@@ -1,15 +1,10 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
 
 const AuthHeader = () => {
-  const navigate = useNavigate();
-
   return (
-    <>
-      <h1 className="text-4xl  font-bold text-[#007bff]">Klinica</h1>
-    
-
-    </>
+    <div className="w-full text-center">
+      <h1 className="text-4xl font-bold text-[#007bff]">Klinica</h1>
+    </div>
   );
 };
 

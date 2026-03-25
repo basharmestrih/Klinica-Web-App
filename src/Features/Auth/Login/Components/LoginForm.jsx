@@ -13,7 +13,7 @@ const LoginForm = () => {
   const handleLogin = useHandleLogin(email, password);
 
   return (
-    <div className="ml-10 bg-white/90 backdrop-blur-md px-8 py-6 rounded-2xl shadow-xl w-96 mt-6 transition transform hover:scale-[1.02] hover:shadow-2xl">
+    <div className="mt-6 w-full max-w-[24rem] rounded-2xl bg-white/90 px-5 py-6 shadow-xl backdrop-blur-md transition hover:shadow-2xl sm:px-8 sm:hover:scale-[1.02]">
       {/* Header */}
       <h1 className="text-gray-400 text-xl font-extrabold text-center mb-6">
         Login to Your Patient Account

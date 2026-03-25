@@ -1,32 +1,21 @@
-// Components/SearchBar.jsx
-import { FunnelIcon } from "@heroicons/react/24/outline";
-import CartPopup from "./CartPopup.jsx";
-
-import React, { useEffect, useState } from "react";
-
+import React from "react";
+import { Search } from "lucide-react";
 
 const SearchBar = ({ searchTerm, setSearchTerm }) => {
-
-
-
-  
   return (
-    <div className="mb-5 w-2/4 flex items-center gap-3">
-      {/* Search Bar */}
-      <div className="flex items-center flex-grow bg-gray-200 border border-gray-300 rounded-lg shadow-sm focus-within:ring-2 focus-within:ring-blue-400">
+    <div className="flex w-full gap-3">
+      <div className="flex w-full items-center gap-3 rounded-[1.6rem] border border-slate-200 bg-slate-50 px-4 py-1 shadow-sm transition focus-within:border-blue-400 focus-within:bg-white focus-within:ring-4 focus-within:ring-blue-100">
+        <Search size={18} className="shrink-0 text-slate-400" />
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search products..."
-          className="bg-gray-200 w-full px-4 py-2 focus:outline-none rounded-lg"
+          className="w-full bg-transparent px-0 py-3 text-slate-800 placeholder:text-slate-400 focus:outline-none"
         />
       </div>
-
-      
     </div>
   );
 };
-
 
 export default SearchBar;
